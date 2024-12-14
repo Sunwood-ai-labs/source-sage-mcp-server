@@ -1,0 +1,44 @@
+{
+  "name": "@sunwood-ai-labs/source-sage-mcp-server",
+  "version": "0.1.0",
+  "description": "A directory structure visualization MCP server",
+  "type": "module",
+  "bin": {
+    "source-sage": "./build/index.js"
+  },
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+    "prepare": "npm run build",
+    "watch": "tsc --watch",
+    "inspector": "npx @modelcontextprotocol/inspector build/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "0.6.0",
+    "glob": "^11.0.0",
+    "ignore": "^6.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "typescript": "^5.3.3"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "directory",
+    "structure",
+    "visualization"
+  ],
+  "author": "Sunwood AI Labs",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunwood-ai-labs/source-sage-mcp-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sunwood-ai-labs/source-sage-mcp-server/issues"
+  },
+  "homepage": "https://github.com/sunwood-ai-labs/source-sage-mcp-server#readme"
+}
