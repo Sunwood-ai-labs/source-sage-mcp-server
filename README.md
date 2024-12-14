@@ -13,15 +13,15 @@ SourceSageは、プロジェクトのディレクトリ構造を美しいマー�
 - 📁 ディレクトリ構造のマークダウン形式での出力
 - 🎨 美しい木構造表示（ASCII art）
 - 📝 ファイル内容の自動ドキュメント化（言語別のシンタックスハイライト付き）
-- 🔍 スマートな除外パターン（.SourceSageignore）
-- 🚀 非同期処理による高速な構造解析
-- 💫 OS情報を含む詳細な出力フォーマット
+- 🔍 柔軟な除外パターン（.SourceSageignore）
+- 🚀 ES2022とNode16モジュールシステムによる最新の実装
+- 💫 厳格な型チェックによる高い信頼性
 
 ## 🛠️ 技術スタック
 
-- 🔷 TypeScript
+- 🔷 TypeScript (ES2022ターゲット)
 - 📦 Model Context Protocol SDK (v0.6.0)
-- 🌐 Node.js
+- 🌐 Node.js (Node16モジュールシステム)
 - 📚 glob (v11.0.0) - ファイルパターンマッチング
 - 🎭 ignore (v6.0.2) - 柔軟なファイル除外機能
 
@@ -35,10 +35,29 @@ source-sage/
 │   └── index.ts           # メインサーバー実装
 ├── build/                 # コンパイル済みJavaScriptファイル
 ├── .gitignore            # Gitの除外設定
+├── .SourceSageignore     # SourceSage固有の除外設定
 ├── package.json          # プロジェクト設定・依存関係
 ├── package-lock.json     # 依存関係のロックファイル
 ├── README.md            # プロジェクトドキュメント
 └── tsconfig.json        # TypeScript設定
+```
+
+## ⚙️ TypeScript設定
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES2022",        // 最新のECMAScript機能を活用
+    "module": "Node16",        // Node.js 16の最新モジュールシステムを使用
+    "moduleResolution": "Node16",
+    "outDir": "./build",      // コンパイル済みファイルの出力先
+    "rootDir": "./src",       // ソースファイルのルートディレクトリ
+    "strict": true,           // 厳格な型チェックを有効化
+    "esModuleInterop": true,  // CommonJSモジュールとの相互運用性を確保
+    "skipLibCheck": true,     // 型定義ファイルのチェックをスキップ
+    "forceConsistentCasingInFileNames": true  // ファイル名の大文字小文字を厳格に管理
+  }
+}
 ```
 
 ## ⚙️ インストール
@@ -91,30 +110,82 @@ interface GenerateStructureArgs {
 ### 使用例
 
 ```typescript
+// 相対パスでの使用
 const result = await mcpClient.callTool('source-sage', 'generate_structure', {
-  path: '/path/to/your/project',
-  ignorePath: '/path/to/.SourceSageignore'
+  path: './your-project',
+		ignorePath: './.SourceSageignore'
+});
+
+// 絶対パスでの使用（推奨）
+const result = await mcpClient.callTool('source-sage', 'generate_structure', {
+		path: 'c:/Users/your-name/path/to/your-project',
+		ignorePath: 'c:/Users/your-name/path/to/your-project/.SourceSageignore'
 });
 ```
 
-## 📝 .SourceSageignoreの設定
+### 出力サンプル
 
-プロジェクトのルートに`.SourceSageignore`ファイルを作成し、除外したいパターンを記述します：
+実際のプロジェクト構造の出力例：
 
 ```plaintext
-# デフォルトで除外されるパターン
-.git/
-node_modules/
-__pycache__/
-*.pyc
-.DS_Store
-.SourceSageAssets
+# 📁 Project: source-sage
 
-# カスタム除外パターン
-dist/
-coverage/
-*.log
-*.tmp
+## 🌳 ディレクトリ構造
+
+OS: win32
+Directory: c:\Users\your-name\source-sage
+
+└─ source-sage/
+			├─ src/
+			│  └─ index.ts          # MCPサーバーの主要な実装
+			├─ package.json         # プロジェクトの依存関係と設定
+			├─ README.md           # プロジェクトの詳細な説明
+			└─ tsconfig.json       # TypeScriptのコンパイル設定
+```
+
+この出力には以下の情報が含まれます：
+
+- 📁 プロジェクト名とOS情報
+- 🌳 ディレクトリツリー構造
+- 📝 各ファイルの役割と説明
+- 🔍 .SourceSageignoreによる不要ファイルの除外
+
+## 📝 .SourceSageignoreの設定
+
+プロジェクトのルートに`.SourceSageignore`ファイルを作成し、除外したいパターンを記述します。デフォルトで以下のような除外パターンが含まれています：
+
+```plaintext
+# バージョン管理システム関連
+.git
+.gitignore
+
+# キャッシュファイル
+__pycache__
+.pytest_cache
+**/__pycache__/**
+*.pyc
+
+# ビルド・配布関連
+build
+dist
+*.egg-info
+
+# 一時ファイル・出力
+output
+output.md
+test_output
+.SourceSageAssets
+.SourceSageAssetsDemo
+
+# アセット
+*.png
+*.svg
+assets
+
+# その他
+LICENSE
+example
+folder
 ```
 
 ## 🔄 出力例
@@ -154,7 +225,7 @@ Directory: /path/to/my-project
   - ディレクトリとファイルを適切にソートして表示
 - **File Filtering**: 
   - `ignore`パッケージを使用して柔軟なファイル除外を実現
-  - デフォルトとカスタムの除外パターンをサポート
+  - 豊富なデフォルト除外パターンとカスタム設定をサポート
 - **Content Generation**:
   - ファイルタイプに応じた適切なシンタックスハイライト
   - ファイルの種類に基づく追加情報の提供
