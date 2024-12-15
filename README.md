@@ -48,7 +48,6 @@ source-sage/
 ├── .gitignore            # Gitの除外設定
 ├── .SourceSageignore     # SourceSage固有の除外設定
 ├── package.json          # プロジェクト設定・依存関係
-├── package-lock.json     # 依存関係のロックファイル
 ├── README.md            # プロジェクトドキュメント
 └── tsconfig.json        # TypeScript設定
 ```
@@ -97,7 +96,7 @@ npm run build
   "mcpServers": {
     "source-sage": {
       "command": "node",
-      "args": ["path/to/source-sage/build/index.js"]
+      "args": ["C:/path/to/source-sage/build/index.js"]
     }
   }
 }
@@ -112,8 +111,10 @@ npm run build
 ```typescript
 interface GenerateStructureArgs {
   // 構造を生成するディレクトリのパス（必須）
+  // 必ず絶対パスで指定してください
   path: string;
   // .SourceSageignoreファイルのパス（オプション）
+  // 指定する場合は絶対パスで指定してください
   ignorePath?: string;
 }
 ```
@@ -121,16 +122,10 @@ interface GenerateStructureArgs {
 ### 使用例
 
 ```typescript
-// 相対パスでの使用
-const result = await mcpClient.callTool('source-sage', 'generate_structure', {
-  path: './your-project',
-		ignorePath: './.SourceSageignore'
-});
-
 // 絶対パスでの使用（推奨）
 const result = await mcpClient.callTool('source-sage', 'generate_structure', {
-		path: 'c:/Users/your-name/path/to/your-project',
-		ignorePath: 'c:/Users/your-name/path/to/your-project/.SourceSageignore'
+  path: 'C:/Users/your-name/path/to/your-project',
+  ignorePath: 'C:/Users/your-name/path/to/your-project/.SourceSageignore'
 });
 ```
 
@@ -144,14 +139,14 @@ const result = await mcpClient.callTool('source-sage', 'generate_structure', {
 ## 🌳 ディレクトリ構造
 
 OS: win32
-Directory: c:\Users\your-name\source-sage
+Directory: C:\Users\your-name\source-sage
 
 └─ source-sage/
-			├─ src/
-			│  └─ index.ts          # MCPサーバーの主要な実装
-			├─ package.json         # プロジェクトの依存関係と設定
-			├─ README.md           # プロジェクトの詳細な説明
-			└─ tsconfig.json       # TypeScriptのコンパイル設定
+   ├─ src/
+   │  └─ index.ts          # MCPサーバーの主要な実装
+   ├─ package.json         # プロジェクトの依存関係と設定
+   ├─ README.md           # プロジェクトの詳細な説明
+   └─ tsconfig.json       # TypeScriptのコンパイル設定
 ```
 
 この出力には以下の情報が含まれます：
@@ -197,6 +192,7 @@ assets
 LICENSE
 example
 folder
+package-lock.json
 ```
 
 ## 🔄 出力例
@@ -206,8 +202,8 @@ folder
 
   ## 🌳 ディレクトリ構造
 
-  OS: linux
-  Directory: /path/to/my-project
+  OS: win32
+  Directory: C:\path\to\my-project
 
   └─ my-project/
     ├─ src/
