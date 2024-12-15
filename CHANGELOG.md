@@ -12,6 +12,32 @@
 </div>
 
 
+## [v0.2.0] - 2024-01-25
+
+![](assets/release-header-v0.2.0.svg)
+
+### ✨ 追加
+- `package-lock.json`をデフォルトの除外パターンに追加 (`.gitignore`を更新)
+- サーバーモジュールを追加 (`src/server/source-sage-server.ts`, `src/server/tool-handlers.ts`を追加)
+- サービスモジュールを追加 (`src/services/structure-generator.ts`, `src/services/tree-builder.ts`を追加)
+- ユーティリティモジュールを追加 (`src/utils/file-utils.ts`, `src/utils/validation.ts`を追加)
+- 型定義モジュールを追加 (`src/types/types.ts`を追加)
+- CHANGELOGとリリースのヘッダーSVGを追加 (`assets/changelog-header.svg`, `assets/release-header-v0.1.0.svg`を追加)
+- MITライセンスファイルを追加 (`LICENSE.md`を追加)
+
+### 📚 ドキュメント
+- READMEを更新 (`README.md`を更新)
+  - 絶対パスの使用を推奨するように変更
+  - ディレクトリ構造の表示を修正
+  - 使用例を修正
+  - MCP設定例を修正
+- ファイルの変更内容からチェンジログを更新
+- チェンジログを追加
+
+### 🔧 変更
+- メインエントリーポイントを更新 (`src/index.ts`を大幅にリファクタリング)
+- `package.json`のbuildスクリプトを修正
+
 ## [v0.1.0] - 2024-01-24
 
 ![](assets/release-header-v0.1.0.svg)
@@ -46,5 +72,6 @@
 ### 🎉 初期リリース
 - プロジェクトの初期構成を作成
 
+[v0.2.0]: https://github.com/username/source-sage-mcp-server/compare/v0.1.0...v0.2.0
 [v0.1.0]: https://github.com/username/source-sage-mcp-server/compare/v0.0.0...v0.1.0
 [v0.0.0]: https://github.com/username/source-sage-mcp-server/releases/tag/v0.0.0
