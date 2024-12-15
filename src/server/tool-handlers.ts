@@ -32,17 +32,17 @@ export class ToolHandlers {
       tools: [
         {
           name: 'generate_structure',
-          description: 'プロジェクトのディレクトリ構造を生成します',
+          description: 'プロジェクトのディレクトリ構造を生成し、ファイル内容も含めた詳細なドキュメントを作成します。プロジェクトやリポジトリ、フォルダの内容を理解するときに使用します。',
           inputSchema: {
             type: 'object',
             properties: {
               path: {
                 type: 'string',
-                description: '構造を生成するディレクトリのパス',
+                description: '構造を生成するディレクトリの絶対パス',
               },
               ignorePath: {
                 type: 'string',
-                description: '.SourceSageignoreファイルのパス（オプション）',
+                description: '.SourceSageignoreファイルの絶対パス（オプション）',
               },
             },
             required: ['path'],
