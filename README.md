@@ -1,7 +1,7 @@
 <div align="center">
 <img src="https://raw.githubusercontent.com/Sunwood-ai-labs/source-sage-mcp-server/refs/heads/master/assets/sourcesage-magical.svg" width="100%">
 
-# 🌟 SourceSage
+# 🌟 SourceSage MCP
 
 <p align="center">
 <img alt="GitHub" src="https://img.shields.io/github/license/sunwood-ai-labs/source-sage-mcp-server">
