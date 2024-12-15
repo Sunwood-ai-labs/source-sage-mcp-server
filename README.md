@@ -1,5 +1,5 @@
 <div align="center">
-<img src="assets/sourcesage-magical.svg" width="100%">
+<img src="https://raw.githubusercontent.com/Sunwood-ai-labs/source-sage-mcp-server/refs/heads/master/assets/sourcesage-magical.svg" width="100%">
 
 # 🌟 SourceSage
 
