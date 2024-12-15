@@ -1,12 +1,14 @@
-<p align="center">
-<img src="assets/header.svg" width="100%">
-</p>
+<div align="center">
+<img src="assets/sourcesage-magical.svg" width="100%">
 
 # 🌟 SourceSage
 
 ## 📖 概要
 
 SourceSageは、プロジェクトのディレクトリ構造を美しいマークダウン形式で可視化するMCPサーバーです。TypeScriptで実装され、高度なカスタマイズ性と柔軟な除外パターン機能を提供します。また、各ファイルの内容を自動的にドキュメント化し、プロジェクトの全体像を把握しやすくします。
+
+</div>
+
 
 ## 🎯 主な特徴
 
@@ -191,29 +193,27 @@ folder
 ## 🔄 出力例
 
 ```plaintext
-# 📁 Project: my-project
+  # 📁 Project: my-project
 
-## 🌳 ディレクトリ構造
+  ## 🌳 ディレクトリ構造
 
-OS: linux
-Directory: /path/to/my-project
+  OS: linux
+  Directory: /path/to/my-project
 
-└─ my-project/
-   ├─ src/
-   │  ├─ index.ts
-   │  └─ utils/
-   │     └─ helper.ts
-   └─ package.json
+  └─ my-project/
+    ├─ src/
+    │  ├─ index.ts
+    │  └─ utils/
+    │     └─ helper.ts
+    └─ package.json
 
-## 📄 ファイル内容
+  ## 📄 ファイル内容
 
-### 📝 `src/index.ts`
-**Type**: TypeScript Source File
+  ### 📝 `src/index.ts`
+  **Type**: TypeScript Source File
 
-```typescript
-// ファイル内容がここに表示されます
 ```
-```
+
 
 ## 👨‍💻 開発者向け情報
 
