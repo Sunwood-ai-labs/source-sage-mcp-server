@@ -20,7 +20,8 @@ export const getDefaultIgnorePatterns = (): string[] => {
     '__pycache__',
     '*.pyc',
     '.DS_Store',
-    '.SourceSageAssets'
+    '.SourceSageAssets',
+    'package-lock.json'  // package-lock.jsonを追加
   ];
 };
 
