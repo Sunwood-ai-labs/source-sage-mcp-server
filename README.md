@@ -3,6 +3,15 @@
 
 # 🌟 SourceSage
 
+<p align="center">
+<img alt="GitHub" src="https://img.shields.io/github/license/sunwood-ai-labs/source-sage-mcp-server">
+<img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/sunwood-ai-labs/source-sage-mcp-server">
+<img alt="GitHub issues" src="https://img.shields.io/github/issues/sunwood-ai-labs/source-sage-mcp-server">
+<img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/sunwood-ai-labs/source-sage-mcp-server">
+<img alt="npm" src="https://img.shields.io/npm/v/@sunwood-ai-labs/source-sage-mcp-server">
+<img alt="npm" src="https://img.shields.io/npm/dt/@sunwood-ai-labs/source-sage-mcp-server">
+</p>
+
 ## 📖 概要
 
 SourceSageは、プロジェクトのディレクトリ構造を美しいマークダウン形式で可視化するMCPサーバーです。TypeScriptで実装され、高度なカスタマイズ性と柔軟な除外パターン機能を提供します。また、各ファイルの内容を自動的にドキュメント化し、プロジェクトの全体像を把握しやすくします。
