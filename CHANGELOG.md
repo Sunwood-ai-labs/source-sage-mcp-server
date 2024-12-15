@@ -1,4 +1,4 @@
-![](assets\changelog-header.svg)
+![](assets/changelog-header.svg)
 
 <div align="center">
 
@@ -14,7 +14,7 @@
 
 ## [v0.1.0] - 2024-01-24
 
-![](assets\release-header-v0.1.0.svg)
+![](assets/release-header-v0.1.0.svg)
 
 ### ✨ 追加
 - プロジェクトの基本構成を実装
