@@ -1,3 +1,7 @@
+![](assets\changelog-header.svg)
+
+<div align="center">
+
 # 📝 Changelog
 
 このプロジェクトの全ての重要な変更はこのファイルに記載されます。
@@ -5,7 +9,12 @@
 フォーマットは [Keep a Changelog](https://keepachangelog.com/ja/1.0.0/) に基づいています。
 またこのプロジェクトは [Semantic Versioning](https://semver.org/lang/ja/) に従います。
 
+</div>
+
+
 ## [v0.1.0] - 2024-01-24
+
+![](assets\release-header-v0.1.0.svg)
 
 ### ✨ 追加
 - プロジェクトの基本構成を実装
