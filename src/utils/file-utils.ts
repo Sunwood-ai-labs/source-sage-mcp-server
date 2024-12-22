@@ -11,6 +11,47 @@ export const normalizeSlashes = (filePath: string): string => {
 };
 
 /**
+ * デフォルトの.SourceSageignoreテンプレート内容を取得する
+ */
+export const getDefaultIgnoreTemplate = (): string => {
+  return `# バージョン管理システム関連
+.git
+.gitignore
+
+# キャッシュファイル
+__pycache__
+.pytest_cache
+**/__pycache__/**
+*.pyc
+
+# ビルド・配布関連
+build
+dist
+*.egg-info
+node_modules
+
+# 一時ファイル・出力
+output
+output.md
+test_output
+.SourceSageAssets
+.SourceSageAssetsDemo
+
+# アセット
+*.png
+*.svg
+assets
+
+# その他
+LICENSE
+example
+folder
+package-lock.json
+.DS_Store
+`;
+};
+
+/**
  * デフォルトの無視パターンを取得する
  */
 export const getDefaultIgnorePatterns = (): string[] => {
@@ -21,8 +62,22 @@ export const getDefaultIgnorePatterns = (): string[] => {
     '*.pyc',
     '.DS_Store',
     '.SourceSageAssets',
-    'package-lock.json'  // package-lock.jsonを追加
+    'package-lock.json'
   ];
+};
+
+/**
+ * .SourceSageignoreファイルを作成または取得する
+ */
+export const ensureIgnoreFile = (targetPath: string): string => {
+  const defaultIgnorePath = path.join(targetPath, '.SourceSageignore');
+  
+  if (!fs.existsSync(defaultIgnorePath)) {
+    fs.writeFileSync(defaultIgnorePath, getDefaultIgnoreTemplate(), 'utf-8');
+    console.log(`Created default .SourceSageignore at ${defaultIgnorePath}`);
+  }
+  
+  return defaultIgnorePath;
 };
 
 /**
@@ -35,12 +90,12 @@ export const getFileList = async (
   const ig = ignore.default();
   ig.add(getDefaultIgnorePatterns());
 
-  if (ignorePath) {
-    const resolvedIgnorePath = path.resolve(ignorePath);
-    if (fs.existsSync(resolvedIgnorePath)) {
-      const ignoreContent = fs.readFileSync(resolvedIgnorePath, 'utf-8');
-      ig.add(ignoreContent);
-    }
+  // ignorePath が指定されていない場合、デフォルトのパスを使用
+  const effectiveIgnorePath = ignorePath || ensureIgnoreFile(targetPath);
+  
+  if (fs.existsSync(effectiveIgnorePath)) {
+    const ignoreContent = fs.readFileSync(effectiveIgnorePath, 'utf-8');
+    ig.add(ignoreContent);
   }
 
   const files = await glob('**/*', {

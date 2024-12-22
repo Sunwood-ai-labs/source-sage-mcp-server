@@ -14,3 +14,11 @@ export interface TreeNode {
   isDirectory: boolean;
   children: TreeNode[];
 }
+
+/**
+ * ファイル統計情報を表すインターフェース
+ */
+export interface FileStats {
+  path: string;
+  lineCount: number;
+}
