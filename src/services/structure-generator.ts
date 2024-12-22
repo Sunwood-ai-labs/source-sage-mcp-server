@@ -63,6 +63,7 @@ export class StructureGenerator {
       '```plaintext',
       `OS: ${process.platform}`,
       `Directory: ${targetPath}`,
+      `Ignore File: ${args.ignorePath || '.SourceSageignore (auto-generated)'}`,
       '',
       ...this.treeBuilder.printTree(tree),
       '```',
